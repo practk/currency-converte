@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>隱私權政策 - [你的擴充功能名稱]</title>
+  <title>隱私權政策 - 貨幣轉換器 Currency Converter</title>
   <style>
     body {
       font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
@@ -24,30 +24,40 @@
   <h1>隱私權政策</h1>
   <p class="updated">最後更新日期：2026 年 7 月 7 日</p>
 
-  <p>本隱私權政策說明「[你的擴充功能名稱]」（以下簡稱「本擴充功能」）如何處理使用者資料。</p>
+  <p>本隱私權政策說明「貨幣轉換器 Currency Converter」（以下簡稱「本擴充功能」）如何處理資料。本擴充功能的功能為：自動偵測網頁上顯示的各國貨幣金額（如 USD、EUR、JPY、TWD 等），並依即時匯率換算為使用者選擇的目標貨幣，顯示於原金額旁。</p>
 
   <h2>一、資料蒐集</h2>
-  <p>本擴充功能<strong>不會蒐集、儲存或傳輸</strong>任何使用者的個人身分資訊（如姓名、電子郵件、IP 位址等）。</p>
-  <!-- 如果你的擴充功能有蒐集資料，請改寫上面這段，明確列出蒐集哪些資料 -->
+  <p>本擴充功能<strong>不會蒐集、儲存或傳輸任何個人身分資訊</strong>，包括但不限於：姓名、電子郵件、帳號、瀏覽紀錄、網頁內容或輸入的文字。</p>
+  <p>網頁內容的讀取與金額換算<strong>完全在使用者的瀏覽器本機端執行</strong>，讀取的頁面文字不會被記錄，也不會傳送至任何伺服器。</p>
 
-  <h2>二、資料使用方式</h2>
-  <p>本擴充功能的所有功能皆在使用者的瀏覽器本機端執行。若有設定資料（例如使用者偏好），僅儲存於瀏覽器的本機儲存空間（chrome.storage），不會上傳至任何伺服器。</p>
-
-  <h2>三、權限說明</h2>
-  <p>本擴充功能要求的權限僅用於實現其核心功能：</p>
+  <h2>二、本機儲存的資料</h2>
+  <p>為提供功能，本擴充功能僅在瀏覽器內儲存以下設定資料（透過 chrome.storage）：</p>
   <ul>
-    <li><strong>[權限名稱，例如 activeTab]</strong>：用於 [說明用途]。</li>
-    <li><strong>[權限名稱，例如 storage]</strong>：用於在本機儲存使用者的偏好設定。</li>
+    <li><strong>使用者偏好設定</strong>：目標貨幣、是否啟用換算、是否顯示原始金額、是否顯示 $ 符號換算提示、使用者自訂的停用網站清單。此類設定經由 Chrome 同步儲存空間（storage.sync）保存，僅在使用者自己登入的 Chrome 帳號裝置間同步，開發者無法存取。</li>
+    <li><strong>匯率快取</strong>：為減少網路請求，向匯率服務取得的匯率資料會暫存於瀏覽器本機（storage.local）。</li>
   </ul>
 
-  <h2>四、第三方分享</h2>
-  <p>本擴充功能不會將任何使用者資料出售、交換或提供給第三方。</p>
+  <h2>三、網路請求</h2>
+  <p>本擴充功能唯一的對外網路請求，是向第三方匯率資料服務取得公開匯率資訊。該請求僅包含基準貨幣代碼（例如 USD），<strong>不包含任何個人資訊、瀏覽網址或網頁內容</strong>。</p>
+  <!-- 請填入你實際使用的匯率 API，例如： -->
+  <p>匯率資料來源：<strong>[匯率 API 服務名稱，ExchangeRate-API / Frankfurter]</strong>（<a href="https://www.exchangerate-api.com/terms">該服務的隱私權政策</a>）。</p>
 
-  <h2>五、政策變更</h2>
+  <h2>四、權限說明</h2>
+  <p>本擴充功能要求的權限僅用於實現核心功能：</p>
+  <ul>
+    <li><strong>storage</strong>：於瀏覽器本機儲存使用者偏好設定與匯率快取。</li>
+    <li><strong>網頁內容存取（content script）</strong>：用於讀取頁面上顯示的金額文字並就地顯示換算結果。此處理僅發生在本機，不會上傳任何頁面內容。部分網站（如 AI 對話、程式碼平台）已預設排除以避免干擾。</li>
+    <li><strong>[如 manifest 有 host_permissions，請列出，例如匯率 API 網域]</strong>：僅用於取得匯率資料。</li>
+  </ul>
+
+  <h2>五、第三方分享</h2>
+  <p>本擴充功能不會將任何資料出售、交換或提供給第三方，亦不含任何廣告或追蹤程式碼（如 Google Analytics）。</p>
+
+  <h2>六、政策變更</h2>
   <p>若本隱私權政策有任何變更，將於本頁面更新並註明修訂日期。</p>
 
-  <h2>六、聯絡方式</h2>
-  <p>若您對本隱私權政策有任何疑問，歡迎透過以下方式聯絡開發者：</p>
-  <p>Email：<a href="mailto:your-email@example.com">your-email@example.com</a></p>
+  <h2>七、聯絡方式</h2>
+  <p>若您對本隱私權政策有任何疑問，歡迎聯絡開發者：</p>
+  <p>Email：<a href="mailto:practk@gmail.com">practk@gmail.com</a></p>
 </body>
 </html>
